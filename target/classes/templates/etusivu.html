@@ -11,8 +11,10 @@
         
         <ul>
             <li th:each="kurssi : ${kurssit}">
-                <span th:text="${kurssi.toString}"></span>
-                <a th:href="@{~/__${kurssi}__}">Aiheisiin</a>
+                <span th:text="${kurssi}"></span>
+                <form th:action="@{~/{kurssi}(kurssi=${kurssi})}" method="GET">
+                    <input type="submit" value="Aiheisiin"/>
+                </form>
             </li>
                 
         </ul>
