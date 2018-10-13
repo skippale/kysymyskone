@@ -26,7 +26,21 @@ public class VastausDao implements Dao<Vastaus, Integer>{
     
     @Override
     public Vastaus findOne(Integer key) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Connection conn = getConnection();
+        
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Vastaus WHERE id = ?");
+        stmt.setInt(1, key); 
+        ResultSet tulos = stmt.executeQuery();
+        tulos.next();
+        String vastausteksti = tulos.getString("vastausteksti");
+        int kysymys_id = tulos.getInt("kysymys_id");
+        int oikein = tulos.getInt("oikein");
+            
+        Vastaus vastaus = new Vastaus(key, kysymys_id, vastausteksti, oikein);
+        tulos.close();
+        stmt.close();
+        conn.close();
+        return vastaus; 
     }
 
     
