@@ -10,12 +10,20 @@
         <span th:text="${vastaus.isOikein}"></span>
         
     
-        <a th:href="@{~/__${kurssisivu}__/__${aihesivu}__/__${kysymys.id}__}">Kysymyssivulle</a>
-        <a th:href="@{~/__{kurssisivu}__/__${aihesivu}__}">Aihesivulle</a>
-        <a th:href="@{~/__${kurssisivu}__}">Kurssisivulle</a>
         <form action="/" method="GET">
-                <input type="submit" value="Etusivulle"/>
+            <input type="submit" value="Takaisin etusivulle"/>
         </form>
+        <form th:action="@{~/__${kurssisivu}__}" method="GET">
+            <input type="submit" value="Takaisin kurssin sivulle"/>
+        </form>
+        <form th:action="@{~/__${kurssisivu}__/__${aihesivu}__}" method="GET">
+            <input type="submit" value="Takaisin aiheen sivulle"/>
+        </form>
+        <form th:action="@{~/__${kurssisivu}__/__${aihesivu}__/
+              __${kysymyssivu}__" method="GET">
+            <input type="submit" value="Takaisin kysymykseen"/>
+        </form>
+        
     </body>
     
 
