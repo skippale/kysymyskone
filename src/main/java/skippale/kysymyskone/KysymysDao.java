@@ -129,8 +129,7 @@ public class KysymysDao implements Dao<Kysymys, Integer>{
 
         Connection conn = getConnection();
 
-        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Kysymys WHERE "
-                + "aihe = ?");
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Kysymys WHERE aihe = ?");
         stmt.setString(1, haku);
         ResultSet tulos = stmt.executeQuery();
 
