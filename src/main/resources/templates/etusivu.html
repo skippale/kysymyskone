@@ -11,7 +11,8 @@
         
         <ol>
             <li th:each="kurssi : ${kurssit}">
-                <a th:href="@{~/__${kurssi}__}"></a>
+                <span th:text="${kurssi}"></span>
+                <a th:href="@{~/__${kurssi}__}">Aiheisiin</a>
             </li>
                 
         </ol>
