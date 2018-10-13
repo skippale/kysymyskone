@@ -60,8 +60,8 @@ public class Main {
         
         Spark.get("/:kurssi/:aihe/:kysymys/:vastaus", (req, res) -> {
             HashMap map = new HashMap<>();
-            Integer vastausId = Integer.parseInt(req.params(":vastaus"));
-            Integer kysymysId = Integer.parseInt(req.params(":kysymys"));
+            Integer vastausId = Integer.parseInt(req.params(":vastaus").trim());
+            Integer kysymysId = Integer.parseInt(req.params(":kysymys").trim());
             map.put("vastaukset", vastaukset.findOne(vastausId));
             map.put("kysymys", kysymykset.findOne(kysymysId));
             String kurssisivu = req.params(":kurssi");
