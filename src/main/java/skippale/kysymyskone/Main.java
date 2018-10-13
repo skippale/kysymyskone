@@ -86,7 +86,7 @@ public class Main {
             return new ModelAndView(map, "kysymyssivu");
         }, new ThymeleafTemplateEngine());
         
-        Spark.post("/kysymys", (req, res) -> {
+        Spark.post("/uusikysymys", (req, res) -> {
             String kurssi = req.queryParams("kurssi");
             String aihe = req.queryParams("aihe");
             String kysymysteksti = req.queryParams("kysymysteksti");

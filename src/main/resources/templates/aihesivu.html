@@ -9,13 +9,20 @@
         <ul>
             <li th:each="kysymys : ${kysymyksia}">
                 <span th:text="${kysymys.kysymysteksti}">Kysymys</span>
-                <a th:href="@{~/__${kurssisivu}__/__${aihesivu}__/__${kysymys.id}__}">Kysymys</a>
+                <form th:action="@{~/__${kurssisivu}__}/__${aihesivu}__/__${kysymys.id}__}" method="GET">
+                    <input type="submit" value="Vastausvaihtoehtoihin"/>
+                </form>
             </li>
         </ul>
         
         
-        <a th:href="@{~/__${kurssisivu}__}">Kurssisivulle</a>
-        <a th:href="@{~/}">Etusivulle</a>
+        
+        <form th:action="/" method="GET">
+                <input type="submit" value="Takaisin etusivulle"/>
+        </form>
+        <form th:action="@{~/__${kurssisivu}__}" method="GET">
+            <input type="submit" value="Takaisin kurssin sivulle"/>
+        </form>
         
     </body>
 </html>
