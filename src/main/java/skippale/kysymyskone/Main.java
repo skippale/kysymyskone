@@ -48,10 +48,10 @@ public class Main {
         Spark.get("/:kurssi/:aihe", (req, res) -> {
             HashMap map = new HashMap<>();
             
-            ArrayList<Kysymys> kysymyksia = kysymykset.findAiheenKysymykset(req.queryParams(":aihe"));
+            ArrayList<Kysymys> kysymyksia = kysymykset.findAiheenKysymykset(req.params(":aihe"));
             map.put("kysymyksia", kysymyksia);
-            String kurssisivu = req.queryParams(":kurssi");
-            String aihesivu = req.queryParams(":aihe");
+            String kurssisivu = req.params(":kurssi");
+            String aihesivu = req.params(":aihe");
             map.put("kurssisivu", kurssisivu);
             map.put("aihesivu", aihesivu);
             
@@ -64,8 +64,8 @@ public class Main {
             Integer kysymysId = Integer.parseInt(req.params(":kysymys"));
             map.put("vastaukset", vastaukset.findOne(vastausId));
             map.put("kysymys", kysymykset.findOne(kysymysId));
-            String kurssisivu = req.queryParams(":kurssi");
-            String aihesivu = req.queryParams(":aihe");
+            String kurssisivu = req.params(":kurssi");
+            String aihesivu = req.params(":aihe");
             map.put("kurssisivu", kurssisivu);
             map.put("aihesivu", aihesivu);
             
