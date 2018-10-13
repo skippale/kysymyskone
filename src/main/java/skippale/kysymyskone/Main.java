@@ -75,6 +75,8 @@ public class Main {
             map.put("kysymys", kysymykset.findOne(kysymysId));
             String kurssisivu = req.params(":kurssi");
             String aihesivu = req.params(":aihe");
+            String kysymyssivu = req.params(":kysymys");
+            map.put("kysymyssivu", kysymyssivu);
             map.put("kurssisivu", kurssisivu);
             map.put("aihesivu", aihesivu);
             
