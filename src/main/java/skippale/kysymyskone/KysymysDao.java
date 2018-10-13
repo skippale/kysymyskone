@@ -31,8 +31,8 @@ public class KysymysDao implements Dao<Kysymys, Integer>{
         ResultSet tulos = stmt.executeQuery();
         
         tulos.next();
-        Kysymys palautus = new Kysymys(tulos.getInt("id"), tulos.getString("kurssi"), 
-        tulos.getString("aihe"), tulos.getString("kysymysteksti"));
+        Kysymys palautus = new Kysymys(tulos.getInt("id"), tulos.getString("kurssi").trim(), 
+        tulos.getString("aihe").trim(), tulos.getString("kysymysteksti").trim());
         stmt.close();
         conn.close();    
         return palautus;
@@ -48,9 +48,9 @@ public class KysymysDao implements Dao<Kysymys, Integer>{
         ResultSet tulos = stmt.executeQuery();
         
         while (tulos.next()) {
-            String kysymysteksti = tulos.getString("kysymysteksti");
-            String aihe = tulos.getString("aihe");
-            String kurssi = tulos.getString("kurssi");
+            String kysymysteksti = tulos.getString("kysymysteksti").trim();
+            String aihe = tulos.getString("aihe").trim();
+            String kurssi = tulos.getString("kurssi").trim();
             int id = tulos.getInt("id");
             
             Kysymys kysymys = new Kysymys(id, kurssi, aihe, kysymysteksti);
@@ -113,7 +113,7 @@ public class KysymysDao implements Dao<Kysymys, Integer>{
         ResultSet tulos = stmt.executeQuery();
 
         while (tulos.next()) {
-            String aihe = tulos.getString("aihe");
+            String aihe = tulos.getString("aihe").trim();
             palautus.add(aihe);
             }
 
@@ -134,9 +134,9 @@ public class KysymysDao implements Dao<Kysymys, Integer>{
         ResultSet tulos = stmt.executeQuery();
 
         while (tulos.next()) {
-            String kysymysteksti = tulos.getString("kysymysteksti");
-            String aihe = tulos.getString("aihe");
-            String kurssi = tulos.getString("kurssi");
+            String kysymysteksti = tulos.getString("kysymysteksti").trim();
+            String aihe = tulos.getString("aihe").trim();
+            String kurssi = tulos.getString("kurssi").trim();
             int id = tulos.getInt("id");
 
             Kysymys kysymys = new Kysymys(id, kurssi, aihe, kysymysteksti);
@@ -159,7 +159,7 @@ public class KysymysDao implements Dao<Kysymys, Integer>{
         ResultSet tulos = stmt.executeQuery();
 
         while (tulos.next()) {
-            String kurssi = tulos.getString("kurssi");
+            String kurssi = tulos.getString("kurssi").trim();
             palautus.add(kurssi);
         }
 

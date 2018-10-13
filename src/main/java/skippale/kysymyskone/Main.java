@@ -51,7 +51,7 @@ public class Main {
             ArrayList<Kysymys> kysymyksia = kysymykset.findAiheenKysymykset(req.params(":aihe"));
             map.put("kysymyksia", kysymyksia);
             String kurssisivu = req.params(":kurssi");
-            String aiheensivu = req.params(":aiheensivu");
+            String aiheensivu = req.params(":aihe");
             map.put("kurssisivu", kurssisivu);
             map.put("aiheensivu", aiheensivu);
             

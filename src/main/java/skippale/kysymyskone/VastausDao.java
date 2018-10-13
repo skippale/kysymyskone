@@ -32,7 +32,7 @@ public class VastausDao implements Dao<Vastaus, Integer>{
         stmt.setInt(1, key); 
         ResultSet tulos = stmt.executeQuery();
         tulos.next();
-        String vastausteksti = tulos.getString("vastausteksti");
+        String vastausteksti = tulos.getString("vastausteksti").trim();
         int kysymys_id = tulos.getInt("kysymys_id");
         int oikein = tulos.getInt("oikein");
             
@@ -54,7 +54,7 @@ public class VastausDao implements Dao<Vastaus, Integer>{
         ResultSet tulos = stmt.executeQuery();
         int kysymys_id = key;
         while (tulos.next()) {
-            String vastausteksti = tulos.getString("vastausteksti");
+            String vastausteksti = tulos.getString("vastausteksti").trim();
             int id = tulos.getInt("id");
             int oikein = tulos.getInt("oikein");
             
