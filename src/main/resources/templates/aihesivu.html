@@ -1,0 +1,21 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${aihesivu}">Aihe</title>
+        <meta charset="UTF-8"></meta>
+    </head>
+    
+    <body>
+        <ol>
+            <li th:each="kysymys : ${kysymyksia}">
+                <span th:text="${kysymys.kysymysteksti}">Kysymys</span>
+                <a th:href="@{~/__${kurssisivu}__/__${aihesivu}__/__${kysymys.id}__}">Kysymys</a>
+            </li>
+        </ol>
+        
+        
+        <a th:href="@{~/__${kurssisivu}__}">Kurssisivulle</a>
+        <a href="/">Etusivulle</a>
+        
+    </body>
+</html>

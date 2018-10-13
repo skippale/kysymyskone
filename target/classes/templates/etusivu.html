@@ -11,18 +11,18 @@
         
         <ol>
             <li th:each="kurssi : ${kurssit}">
-                <a th:href="@{'/' + ${kurssi}}">view</a>
+                <a th:href="@{~/__${kurssi}__}"></a>
             </li>
                 
         </ol>
         
-        <h2>Lisää kysymys</h2>
+        <h2>Lisaa kysymys</h2>
         
         <form method="POST" action="/kysymys">
             <input type="text" name="kurssi"/><br/>
             <input type="text" name="aihe"/><br/>
             <input type="text" name="kysymysteksti"/><br/>
-            <input type="submit" value="Lisää"/>
+            <input type="submit" value="Lisaa"/>
         </form>
 
     </body>

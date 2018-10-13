@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title th:text="${aihesivu}">Aihe</title>
@@ -14,14 +9,13 @@ and open the template in the editor.
         <ol>
             <li th:each="kysymys : ${kysymyksia}">
                 <span th:text="${kysymys.kysymysteksti}">Kysymys</span>
-                <a th:href="@{'/' + ${kurssisivu} + '/' + ${aihesivu} + '/'
-                   + ${kysymys.id}}">Kysymys</a>
+                <a th:href="@{~/__${kurssisivu}__/__${aihesivu}__/__${kysymys.id}__}">Kysymys</a>
             </li>
         </ol>
         
         
-        <a th:href="@{'/' + ${kurssisivu}}">Kurssisivulle</a>
-        <a th:href="/">Etusivulle</a>
+        <a th:href="@{~/__${kurssisivu}__}">Kurssisivulle</a>
+        <a href="/">Etusivulle</a>
         
     </body>
 </html>

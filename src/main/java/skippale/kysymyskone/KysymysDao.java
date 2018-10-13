@@ -163,7 +163,7 @@ public class KysymysDao implements Dao<Kysymys, Integer>{
 
         while (tulos.next()) {
             String kurssi = tulos.getString("kurssi");
-            palautus.add(tulos.getString(kurssi));
+            palautus.add(tulos.getString("kurssi"));
         }
 
 
