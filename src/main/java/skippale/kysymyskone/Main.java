@@ -51,9 +51,9 @@ public class Main {
             ArrayList<Kysymys> kysymyksia = kysymykset.findAiheenKysymykset(req.params(":aihe"));
             map.put("kysymyksia", kysymyksia);
             String kurssisivu = req.params(":kurssi");
-            String aihe = req.params(":aihe");
+            String aiheensivu = req.params(":aiheensivu");
             map.put("kurssisivu", kurssisivu);
-            map.put("aihe", aihe);
+            map.put("aiheensivu", aiheensivu);
             
             return new ModelAndView(map, "aihesivu");
         }, new ThymeleafTemplateEngine());
