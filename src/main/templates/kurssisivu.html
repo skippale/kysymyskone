@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:text="${kurssisivu}">Kurssi</title>
+        <meta charset="UTF-8"></meta>
+            
+    </head>
+    <body>
+        <h1> Aiheet </h1>
+        
+        <ol>
+            <li th:each="aihe : ${aiheet}">
+                <span th:text="${aihe}">Aihe</span>
+                <a th:href="@{'/' + ${kurssisivu} + '/' + ${aihe}}">Kysymykset</a>
+            </li>
+        </ol>
+        
+        <a th:href="/">Etusivulle</a>
+    </body>
+</html>

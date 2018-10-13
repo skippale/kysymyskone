@@ -1,0 +1,29 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Etusivu</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <h2>Kurssit</h2>
+        
+        <ol>
+            <li th:each="kurssi : ${kurssit}">
+                <a th:href="@{'/' + ${kurssi}}">view</a>
+            </li>
+                
+        </ol>
+        
+        <h2>Lisää kysymys</h2>
+        
+        <form method="POST" action="/kysymys">
+            <input type="text" name="kurssi"/><br/>
+            <input type="text" name="aihe"/><br/>
+            <input type="text" name="kysymysteksti"/><br/>
+            <input type="submit" value="Lisää"/>
+        </form>
+
+    </body>
+</html>

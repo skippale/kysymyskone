@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${aihesivu}">Aihe</title>
+        <meta charset="UTF-8"></meta>
+    </head>
+    
+    <body>
+        <ol>
+            <li th:each="kysymys : ${kysymyksia}">
+                <span th:text="${kysymys.kysymysteksti}">Kysymys</span>
+                <a th:href="@{'/' + ${kurssisivu} + '/' + ${aihesivu} + '/'
+                   + ${kysymys.id}}">Kysymys</a>
+            </li>
+        </ol>
+        
+        
+        <a th:href="@{'/' + ${kurssisivu}}">Kurssisivulle</a>
+        <a th:href="/">Etusivulle</a>
+        
+    </body>
+</html>

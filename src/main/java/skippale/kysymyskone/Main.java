@@ -7,6 +7,11 @@ package skippale.kysymyskone;
 
 import spark.Spark;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import spark.ModelAndView;
+import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
 /**
  *
@@ -15,11 +20,109 @@ import java.sql.*;
 public class Main {
     public static void main(String[] args) {
         if (System.getenv("PORT") != null) {
-        Spark.port(Integer.valueOf(System.getenv("PORT")));
-    }
+            Spark.port(Integer.valueOf(System.getenv("PORT")));
+        }
+        
+        VastausDao vastaukset = new VastausDao();
+        KysymysDao kysymykset = new KysymysDao();
 
-        Spark.get("/*", (req, res) -> {
-        return "hei maailma";
-    });
+        Spark.get("/:kurssi", (req, res) -> {
+            HashMap map = new HashMap<>();
+            String kurssisivu = req.queryParams(":kurssi");
+            ArrayList<String> aiheet = kysymykset.findKurssinAiheet(req.queryParams(":kurssi"));
+            map.put("aiheet", aiheet);
+            map.put("kurssi", kurssisivu);
+            
+            return new ModelAndView(map, "kurssisivu");
+        }, new ThymeleafTemplateEngine());
+        
+        Spark.get("/", (req, res) -> {
+            HashMap map = new HashMap<>();
+            
+            ArrayList<String> kurssit = kysymykset.findKurssit();
+            map.put("kurssit", kurssit);
+            
+            return new ModelAndView(map, "etusivu");
+        }, new ThymeleafTemplateEngine());
+        
+        Spark.get("/:kurssi/:aihe", (req, res) -> {
+            HashMap map = new HashMap<>();
+            
+            ArrayList<Kysymys> kysymyksia = kysymykset.findAiheenKysymykset(req.queryParams(":aihe"));
+            map.put("kysymyksia", kysymyksia);
+            String kurssisivu = req.queryParams(":kurssi");
+            String aihesivu = req.queryParams(":aihe");
+            map.put("kurssisivu", kurssisivu);
+            map.put("aihesivu", aihesivu);
+            
+            return new ModelAndView(map, "aihesivu");
+        }, new ThymeleafTemplateEngine());
+        
+        Spark.get("/:kurssi/:aihe/:kysymys/:vastaus", (req, res) -> {
+            HashMap map = new HashMap<>();
+            Integer vastausId = Integer.parseInt(req.params(":vastaus"));
+            Integer kysymysId = Integer.parseInt(req.params(":kysymys"));
+            map.put("vastaukset", vastaukset.findOne(vastausId));
+            map.put("kysymys", kysymykset.findOne(kysymysId));
+            String kurssisivu = req.queryParams(":kurssi");
+            String aihesivu = req.queryParams(":aihe");
+            map.put("kurssisivu", kurssisivu);
+            map.put("aihesivu", aihesivu);
+            
+            
+            return new ModelAndView(map, "kysymyssivu");
+        }, new ThymeleafTemplateEngine());
+        
+        Spark.get("/:kurssi/:aihe/:id", (req, res) -> {
+            HashMap map = new HashMap<>();
+            Integer kysymysId = Integer.parseInt(req.params(":id"));
+            map.put("kysymys", kysymykset.findOne(kysymysId));
+            map.put("vastaukset", vastaukset.findVastaukset(kysymysId));
+            String kurssisivu = req.queryParams(":kurssi");
+            String aihesivu = req.queryParams(":aihe");
+            map.put("kurssisivu", kurssisivu);
+            map.put("aihesivu", aihesivu);
+            
+            return new ModelAndView(map, "kysymyssivu");
+        }, new ThymeleafTemplateEngine());
+        
+        Spark.post("/kysymys", (req, res) -> {
+            String kurssi = req.params("kurssi");
+            String aihe = req.params("aihe");
+            String kysymysteksti = req.params("kysymysteksti");
+            Kysymys kysymys = new Kysymys(-1, kurssi, aihe, kysymysteksti);
+            kysymykset.saveOrUpdate(kysymys);
+            
+            res.redirect("/");
+            return "";
+        });
+        
+        Spark.post("/:kurssi/:aihe/:kysymys/vastaus/", (req, res) -> {
+            int kysymys_id = Integer.parseInt(req.params(":id"));
+            String vastausteksti = req.queryParams("vastausteksti");
+            int oikein = Integer.parseInt(req.queryParams("oikein"));
+            Vastaus vastaus = new Vastaus(-1, kysymys_id, vastausteksti, oikein);
+            vastaukset.saveOrUpdate(vastaus);
+            
+            res.redirect("/:kurssi/:aihe/:kysymys");
+            return "";
+        });
+        
+        Spark.post("/:kurssi/:aihe/:kysymys/:vastaus/poista", (req, res) -> {
+            int key = Integer.parseInt(req.queryParams("key"));
+            vastaukset.delete(key);
+            
+            res.redirect("/kysymys/:id");
+            return "";
+        });
+        
+        Spark.post("/:kurssi/:aihe/:kysymys/poista", (req, res) -> {
+            int key = Integer.parseInt(req.queryParams("key"));
+            kysymykset.delete(key);
+            vastaukset.deleteAll(key);
+            res.redirect("/:aihe/:id");
+            return "";
+        });
+        
     }
 }
