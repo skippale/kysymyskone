@@ -26,7 +26,7 @@ public class KysymysDao implements Dao<Kysymys, Integer>{
     public Kysymys findOne(Integer key) throws SQLException {
         Connection conn = getConnection();
         
-        PreparedStatement stmt = conn.prepareStatement("SELECT FROM Kysymys WHERE id = ?");
+        PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Kysymys WHERE id = ?");
         stmt.setInt(1, key);
         ResultSet tulos = stmt.executeQuery();
         
