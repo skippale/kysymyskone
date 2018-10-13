@@ -11,7 +11,7 @@
         
         <ul>
             <li th:each="kurssi : ${kurssit}">
-                <span th:text="${kurssi}"></span>
+                <span th:text="${kurssi.toString}"></span>
                 <a th:href="@{~/__${kurssi}__}">Aiheisiin</a>
             </li>
                 
