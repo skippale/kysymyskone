@@ -70,12 +70,12 @@ public class Main {
             map.put("aihesivu", aihesivu);
             
             
-            return new ModelAndView(map, "kysymyssivu");
+            return new ModelAndView(map, "vastaussivu");
         }, new ThymeleafTemplateEngine());
         
-        Spark.get("/:kurssi/:aihe/:id", (req, res) -> {
+        Spark.get("/:kurssi/:aihe/:kysymys", (req, res) -> {
             HashMap map = new HashMap<>();
-            Integer kysymysId = Integer.parseInt(req.params(":id"));
+            Integer kysymysId = Integer.parseInt(req.params(":kysymys"));
             map.put("kysymys", kysymykset.findOne(kysymysId));
             map.put("vastaukset", vastaukset.findVastaukset(kysymysId));
             String kurssisivu = req.queryParams(":kurssi");
@@ -90,7 +90,7 @@ public class Main {
             String kurssi = req.params("kurssi");
             String aihe = req.params("aihe");
             String kysymysteksti = req.params("kysymysteksti");
-            Kysymys kysymys = new Kysymys(kurssi, aihe, kysymysteksti);
+            Kysymys kysymys = new Kysymys(-1, kurssi, aihe, kysymysteksti);
             kysymykset.saveOrUpdate(kysymys);
             
             res.redirect("/");
@@ -98,7 +98,7 @@ public class Main {
         });
         
         Spark.post("/:kurssi/:aihe/:kysymys/vastaus/", (req, res) -> {
-            int kysymys_id = Integer.parseInt(req.params(":id"));
+            int kysymys_id = Integer.parseInt(req.params(":kysymys"));
             String vastausteksti = req.queryParams("vastausteksti");
             int oikein = Integer.parseInt(req.queryParams("oikein"));
             Vastaus vastaus = new Vastaus(-1, kysymys_id, vastausteksti, oikein);
@@ -109,18 +109,18 @@ public class Main {
         });
         
         Spark.post("/:kurssi/:aihe/:kysymys/:vastaus/poista", (req, res) -> {
-            int key = Integer.parseInt(req.queryParams("key"));
+            int key = Integer.parseInt(req.params(":vastaus"));
             vastaukset.delete(key);
             
-            res.redirect("/kysymys/:id");
+            res.redirect("/:kurssi/:aihe/:kysymys");
             return "";
         });
         
         Spark.post("/:kurssi/:aihe/:kysymys/poista", (req, res) -> {
-            int key = Integer.parseInt(req.queryParams("key"));
+            int key = Integer.parseInt(req.params(":kysymys"));
             kysymykset.delete(key);
             vastaukset.deleteAll(key);
-            res.redirect("/:aihe/:id");
+            res.redirect("/:kurssi/:aihe");
             return "";
         });
         

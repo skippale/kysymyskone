@@ -16,12 +16,7 @@ public class Kysymys {
     private String kurssi;
     
     
-    public Kysymys(String kurssi, String aihe, String kysymysteksti) {
-        this.id = null;
-        this.kysymysteksti = kysymysteksti;
-        this.aihe = aihe;
-        this.kurssi = kurssi;
-    }
+
     
     public Kysymys(int id, String kurssi, String aihe, String kysymysteksti) {
         this.id = id;
