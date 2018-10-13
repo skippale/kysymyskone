@@ -6,12 +6,12 @@
     </head>
     
     <body>
-        <ol>
+        <ul>
             <li th:each="kysymys : ${kysymyksia}">
                 <span th:text="${kysymys.kysymysteksti}">Kysymys</span>
                 <a th:href="@{~/__${kurssisivu}__/__${aihesivu}__/__${kysymys.id}__}">Kysymys</a>
             </li>
-        </ol>
+        </ul>
         
         
         <a th:href="@{~/__${kurssisivu}__}">Kurssisivulle</a>

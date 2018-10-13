@@ -7,13 +7,13 @@
     
     <body>
         
-        <ol>
+        <ul>
             <li th:each="vastaus : ${vastaukset}">
                 <span th:text="${vastaus.vastausteksti}">Vastausvaihtoehto</span>
                 <a th:href="@{~/__${kurssisivu}__/__${aihesivu}__/__${kysymyssivu}__/
                    __${vastaus.id}__}">Valitse</a>
             </li>
-        </ol>
+        </ul>
         
         <a th:href="@{~/__${kurssisivu}__/__${aihesivu}__}">Aihesivulle</a>
         <a th:href="@{~/__${kurssisivu}__}">Kurssisivulle</a>

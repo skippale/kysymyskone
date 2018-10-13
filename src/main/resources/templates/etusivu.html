@@ -9,13 +9,13 @@
     <body>
         <h2>Kurssit</h2>
         
-        <ol>
+        <ul>
             <li th:each="kurssi : ${kurssit}">
                 <span th:text="${kurssi}"></span>
                 <a th:href="@{~/__${kurssi}__}">Aiheisiin</a>
             </li>
                 
-        </ol>
+        </ul>
         
         <h2>Lisaa kysymys</h2>
         
