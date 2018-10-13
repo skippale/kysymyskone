@@ -23,7 +23,7 @@
             <input type="submit" value="Takaisin aiheen sivulle"/>
         </form>
         <form th:action="@{~/__${kurssisivu}__/__${aihesivu}__/
-              __${kysymyssivu}__}" method="GET">
+              __${kysymys.id}__}" method="GET">
             <input type="submit" value="Takaisin kysymykseen"/>
         </form>
         
