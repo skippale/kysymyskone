@@ -11,7 +11,7 @@
             <li th:each="vastaus : ${vastaukset}">
                 <span th:text="${vastaus.vastausteksti}">Vastausvaihtoehto</span>
                 <form th:action="@{~/__${kurssisivu}__/__${aihesivu}__/__${kysymys.id}__/
-                      __${vastaus.id}__" method="GET">
+                      __${vastaus.id}__}" method="GET">
                     <input type="submit" value="Vastaa"/>
                 </form>
             </li>
@@ -19,7 +19,7 @@
         
         <h2>Lisaa vastausvaihtoehto</h2>
         <form method="POST" action="@{~/__${kurssisivu}__/__${aihesivu}__/
-              __${kysymyssivu}__/vastaus">
+              __${kysymyssivu}__/vastaus}">
             <input type="text" name="aihe"/>Vastaus<br/>
             <select name="oikein">
               <option value="1">Oikein</option>
