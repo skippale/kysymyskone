@@ -36,6 +36,15 @@ public class Main {
             return new ModelAndView(map, "kurssisivu");
         }, new ThymeleafTemplateEngine());
         
+        Spark.get("/kaikki", (req, res) -> {
+            HashMap map = new HashMap<>();
+            
+            ArrayList<Kysymys> kaikki = kysymykset.findAll();
+            map.put("kurssit", kaikki);
+            
+            return new ModelAndView(map, "kaikkikysymykset");
+        }, new ThymeleafTemplateEngine());
+        
         Spark.get("/", (req, res) -> {
             HashMap map = new HashMap<>();
             

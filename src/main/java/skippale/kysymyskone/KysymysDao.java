@@ -39,7 +39,7 @@ public class KysymysDao implements Dao<Kysymys, Integer>{
     }
 
     @Override
-    public List<Kysymys> findAll() throws SQLException {
+    public ArrayList<Kysymys> findAll() throws SQLException {
         ArrayList<Kysymys> palautus = new ArrayList();
         
         Connection conn = getConnection();

@@ -7,7 +7,7 @@
     </head>
 
     <body>
-        <h2>Kurssit</h2>
+        <h2>Kurssit:</h2>
         
         <ul>
             <li th:each="kurssi : ${kurssit}">
@@ -19,8 +19,12 @@
                 
         </ul>
         
-        <h2>Lisaa kysymys</h2>
+        <h2>Kaikki kysymykset:</h2>
+        <form action="/kaikki" method="GET">
+            <input type="submit" value="Nayta"/>
+        </form>
         
+        <h2>Lisaa kysymys:</h2>
         <form method="POST" action="/uusikysymys">
             Kurssi<input type="text" name="kurssi"/><br/>
             Aihe<input type="text" name="aihe"/><br/>
