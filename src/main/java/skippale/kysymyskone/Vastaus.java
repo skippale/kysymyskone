@@ -14,7 +14,7 @@ public class Vastaus {
     private int kysymys_id;
     private String vastausteksti;
     private int oikeinInt;
-    private String oikein = "Väärin!";
+    private String oikein = "Vaarin!";
     
     public Vastaus(int id, int kysymys_id, String vastaus, int oikeinInt) {
         this.id = id;
@@ -43,7 +43,7 @@ public class Vastaus {
         return oikeinInt;
     }
 
-    public String isOikein() {
+    public String getOikein() {
         return oikein;
     }
 }
