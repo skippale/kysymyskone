@@ -40,7 +40,7 @@ public class Main {
             HashMap map = new HashMap<>();
             
             ArrayList<Kysymys> kaikki = kysymykset.findAll();
-            map.put("kurssit", kaikki);
+            map.put("kysymyksia", kaikki);
             
             return new ModelAndView(map, "kaikkikysymykset");
         }, new ThymeleafTemplateEngine());
