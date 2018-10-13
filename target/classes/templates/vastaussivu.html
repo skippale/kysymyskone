@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     
     <head>
-        <title th:text="${vastaus.vastausteksti}">Vastaus</title>
+        <title th:text="${vastaukset.vastausteksti}">Vastaus</title>
         <meta charset="UTF-8"></meta>
     </head>
     <body>
+        <h1>Kysymys oli: <span th:text="${kysymys.kysymysteksti}"></span></h1>
         <h1>Vastaus on: </h1>
-        <span th:text="${vastaus.oikein}"></span>
+        <span th:text="${vastaukset.oikein}"></span>
         
     
         <form action="/" method="GET">
