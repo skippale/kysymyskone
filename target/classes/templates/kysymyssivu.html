@@ -15,6 +15,17 @@
             </li>
         </ul>
         
+        <form method="POST" action="@{~/__${kurssisivu}__/__${aihesivu}__/
+              __${kysymyssivu}__/vastaus">
+            <input type="text" name="aihe"/>Vastaus<br/>
+            <select name="oikein">
+              <option value="1">Oikein</option>
+              <option value="0">Vaarin</option>
+            </select>
+            <input type="submit" value="Lisaa"/>
+        </form>
+        
+        
         <a th:href="@{~/__${kurssisivu}__/__${aihesivu}__}">Aihesivulle</a>
         <a th:href="@{~/__${kurssisivu}__}">Kurssisivulle</a>
         <a th:href="@{~/}">Etusivulle</a>
