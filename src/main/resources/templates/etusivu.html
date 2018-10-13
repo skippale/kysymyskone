@@ -12,7 +12,7 @@
         <ul>
             <li th:each="kurssi : ${kurssit}">
                 <span th:text="${kurssi}"></span>
-                <form th:action="@{~/__{kurssi}(kurssi=${kurssi})__}" method="GET">
+                <form th:action="@{~/__${kurssi}__}" method="GET">
                     <input type="submit" value="Aiheisiin"/>
                 </form>
             </li>
