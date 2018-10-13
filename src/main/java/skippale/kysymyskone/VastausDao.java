@@ -59,7 +59,7 @@ public class VastausDao implements Dao<Vastaus, Integer>{
         Connection conn = getConnection();
         
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO Vastaus "
-                + "(kysymys_id, vastausteksti, oikein) VALUES (?, ?, ?)");
+                + "(kysymys_id, vastausteksti, oikein) VALUES (?, '?', ?)");
         stmt.setInt(1, object.getKysymys_id());
         stmt.setString(2, object.getVastausteksti());
         stmt.setInt(3, object.getOikeinInt());

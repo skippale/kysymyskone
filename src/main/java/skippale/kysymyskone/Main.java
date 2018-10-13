@@ -90,7 +90,7 @@ public class Main {
             String kurssi = req.params("kurssi");
             String aihe = req.params("aihe");
             String kysymysteksti = req.params("kysymysteksti");
-            Kysymys kysymys = new Kysymys(-1, kurssi, aihe, kysymysteksti);
+            Kysymys kysymys = new Kysymys(kurssi, aihe, kysymysteksti);
             kysymykset.saveOrUpdate(kysymys);
             
             res.redirect("/");

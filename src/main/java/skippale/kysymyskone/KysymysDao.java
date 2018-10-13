@@ -68,7 +68,7 @@ public class KysymysDao implements Dao<Kysymys, Integer>{
         Connection conn = getConnection();
         
         PreparedStatement stmt = conn.prepareStatement("INSERT INTO Kysymys "
-                + "(kurssi, aihe, kysymysteksti) VALUES (?, ?, ?)");
+                + "(kurssi, aihe, kysymysteksti) VALUES ('?', '?', '?')");
         stmt.setString(1, object.getKurssi());
         stmt.setString(2, object.getAihe());
         stmt.setString(3, object.getKysymysteksti());
