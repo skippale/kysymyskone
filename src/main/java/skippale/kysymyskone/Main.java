@@ -28,10 +28,10 @@ public class Main {
 
         Spark.get("/:kurssi", (req, res) -> {
             HashMap map = new HashMap<>();
-            String kurssisivu = req.params(":kurssi");
+            String kurssi = req.params(":kurssi");
             ArrayList<String> aiheet = kysymykset.findKurssinAiheet(req.params(":kurssi"));
             map.put("aiheet", aiheet);
-            map.put("kurssi", kurssisivu);
+            map.put("kurssi", kurssi);
             
             return new ModelAndView(map, "kurssisivu");
         }, new ThymeleafTemplateEngine());
