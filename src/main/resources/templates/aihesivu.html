@@ -9,7 +9,7 @@
         <ul>
             <li th:each="kysymys : ${kysymyksia}">
                 <span th:text="${kysymys.kysymysteksti}">Kysymys</span>
-                <form th:action="@{~/__${kurssisivu}__}/__${aihesivu}__/__${kysymys.id}__}" method="GET">
+                <form th:action="@{~/__${kurssisivu}__}/__${aihe}__/__${kysymys.id}__}" method="GET">
                     <input type="submit" value="Vastausvaihtoehtoihin"/>
                 </form>
             </li>
