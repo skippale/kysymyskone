@@ -67,7 +67,7 @@ public class KysymysDao implements Dao<Kysymys, Integer>{
     public void saveOrUpdate(Kysymys object) throws SQLException {
         Connection conn = getConnection();
         
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Kysymys VALUES (kurssi, aihe, kysymysteksti) VALUES (?, ?, ?)");
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Kysymys (kurssi, aihe, kysymysteksti) VALUES (?, ?, ?)");
         stmt.setString(1, object.getKurssi());
         stmt.setString(2, object.getAihe());
         stmt.setString(3, object.getKysymysteksti());

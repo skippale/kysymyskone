@@ -119,7 +119,7 @@ public class Main {
             return "";
         });
         
-        Spark.post("/:kurssi/:aihe/:kysymys/:vastaus/poista", (req, res) -> {
+        Spark.post("/poistavastaus", (req, res) -> {
             int key = Integer.parseInt(req.params(":vastaus").trim());
             vastaukset.delete(key);
             
@@ -127,7 +127,7 @@ public class Main {
             return "";
         });
         
-        Spark.post("/:kurssi/:aihe/:kysymys/poista", (req, res) -> {
+        Spark.post("/poistakysymys", (req, res) -> {
             int key = Integer.parseInt(req.params(":kysymys").trim());
             kysymykset.delete(key);
             vastaukset.deleteAll(key);

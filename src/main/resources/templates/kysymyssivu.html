@@ -29,6 +29,13 @@
         </form>
         <span></span>
         
+        <h2>Poista tama kysymys</h2>
+        <form method="POST" action="/poistavastaus">
+            <input type="hidden" name= "kysymys" th:value="__${kysymys.id}__"/>
+            <input type="submit" value="Poista"/>
+        </form>
+        <span></span>
+        
         <form action="/" method="GET">
                 <input type="submit" value="Takaisin etusivulle"/>
         </form>
