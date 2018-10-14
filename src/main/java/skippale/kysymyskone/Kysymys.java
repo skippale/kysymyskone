@@ -20,9 +20,9 @@ public class Kysymys {
     
     public Kysymys(int id, String kurssi, String aihe, String kysymysteksti) {
         this.id = id;
-        this.kysymysteksti = kysymysteksti;
-        this.aihe = aihe;
-        this.kurssi = kurssi;
+        this.kysymysteksti = kysymysteksti.trim();
+        this.aihe = aihe.trim();
+        this.kurssi = kurssi.trim();
     }
     
     public Integer getId() {

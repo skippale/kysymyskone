@@ -19,7 +19,7 @@ public class Vastaus {
     public Vastaus(int id, int kysymys_id, String vastaus, int oikeinInt) {
         this.id = id;
         this.kysymys_id = kysymys_id;
-        this.vastausteksti = vastaus;
+        this.vastausteksti = vastaus.trim();
         this.oikeinInt = oikeinInt;
         if (oikeinInt == 1) {
             this.oikein = "Oikein!";
