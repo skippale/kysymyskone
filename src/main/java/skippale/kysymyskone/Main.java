@@ -36,13 +36,13 @@ public class Main {
             return new ModelAndView(map, "kurssisivu");
         }, new ThymeleafTemplateEngine());
         
-        Spark.get("/kaikki", (req, res) -> {
+        Spark.get("/kaikki/", (req, res) -> {
             HashMap map = new HashMap<>();
             
             ArrayList<Kysymys> kaikki = kysymykset.findAll();
             map.put("kysymyksia", kaikki);
             
-            return new ModelAndView(map, "kaikkikysymykset.html");
+            return new ModelAndView(map, "kaikkikysymykset");
         }, new ThymeleafTemplateEngine());
         
         Spark.get("/", (req, res) -> {
@@ -129,8 +129,8 @@ public class Main {
         
         Spark.post("/poistakysymys", (req, res) -> {
             int key = Integer.parseInt(req.queryParams("kysymys").trim());
-            kysymykset.delete(key);
             vastaukset.deleteAll(key);
+            kysymykset.delete(key);
             res.redirect("/");
             return "";
         });
