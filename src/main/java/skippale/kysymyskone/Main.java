@@ -29,7 +29,7 @@ public class Main {
         Spark.get("/:kurssi", (req, res) -> {
             HashMap map = new HashMap<>();
             String kurssi = req.params(":kurssi");
-            ArrayList<String> aiheet = kysymykset.findKurssinAiheet(req.params(":kurssi"));
+            ArrayList<String> aiheet = kysymykset.findKurssinAiheet(req.params(":kurssi").trim());
             map.put("aiheet", aiheet);
             map.put("kurssi", kurssi);
             
@@ -59,8 +59,8 @@ public class Main {
             
             ArrayList<Kysymys> kysymyksia = kysymykset.findAiheenKysymykset(req.params(":aihe"));
             map.put("kysymyksia", kysymyksia);
-            String kurssisivu = req.params(":kurssi");
-            String aiheensivu = req.params(":aihe");
+            String kurssisivu = req.params(":kurssi").trim();
+            String aiheensivu = req.params(":aihe").trim();
             map.put("kurssisivu", kurssisivu);
             map.put("aiheensivu", aiheensivu);
             
@@ -73,9 +73,9 @@ public class Main {
             Integer kysymysId = Integer.parseInt(req.params(":kysymys").trim());
             map.put("vastaukset", vastaukset.findOne(vastausId));
             map.put("kysymys", kysymykset.findOne(kysymysId));
-            String kurssisivu = req.params(":kurssi");
-            String aihesivu = req.params(":aihe");
-            String kysymyssivu = req.params(":kysymys");
+            String kurssisivu = req.params(":kurssi").trim();
+            String aihesivu = req.params(":aihe").trim();
+            String kysymyssivu = req.params(":kysymys").trim();
             map.put("kysymyssivu", kysymyssivu);
             map.put("kurssisivu", kurssisivu);
             map.put("aihesivu", aihesivu);
@@ -89,8 +89,8 @@ public class Main {
             Integer kysymysId = Integer.parseInt(req.params(":kysymys").trim());
             map.put("kysymys", kysymykset.findOne(kysymysId));
             map.put("vastaukset", vastaukset.findVastaukset(kysymysId));
-            String kurssisivu = req.params(":kurssi");
-            String aihesivu = req.params(":aihe");
+            String kurssisivu = req.params(":kurssi").trim();
+            String aihesivu = req.params(":aihe").trim();
             map.put("kurssisivu", kurssisivu);
             map.put("aihesivu", aihesivu);
             
@@ -98,9 +98,9 @@ public class Main {
         }, new ThymeleafTemplateEngine());
         
         Spark.post("/uusikysymys", (req, res) -> {
-            String kurssi = req.queryParams("kurssi");
-            String aihe = req.queryParams("aihe");
-            String kysymysteksti = req.queryParams("kysymysteksti");
+            String kurssi = req.queryParams("kurssi").trim();
+            String aihe = req.queryParams("aihe").trim();
+            String kysymysteksti = req.queryParams("kysymysteksti").trim();
             Kysymys kysymys = new Kysymys(-1, kurssi, aihe, kysymysteksti);
             kysymykset.saveOrUpdate(kysymys);
             
@@ -109,8 +109,8 @@ public class Main {
         });
         
         Spark.post("/uusivastaus", (req, res) -> {
-            int kysymys_id = Integer.parseInt(req.queryParams("kysymys"));
-            String vastausteksti = req.queryParams("vastausteksti");
+            int kysymys_id = Integer.parseInt(req.queryParams("kysymys").trim());
+            String vastausteksti = req.queryParams("vastausteksti").trim();
             int oikein = Integer.parseInt(req.queryParams("oikein").trim());
             Vastaus vastaus = new Vastaus(-1, kysymys_id, vastausteksti, oikein);
             vastaukset.saveOrUpdate(vastaus);
