@@ -18,13 +18,13 @@
         </ul>
         
         <h2>Lisaa vastausvaihtoehto</h2>
-        <form method="POST" th:action="@{~/__${kurssisivu}__/__${aihesivu}__/
-              __${kysymys.id}__/vastaus}">
+        <form method="POST" action="/uusivastaus">
             <input type="text" name="vastausteksti"/>Vastaus<br/>
             <select name="oikein">
               <option value="1">Oikein</option>
               <option value="0">Vaarin</option>
             </select>
+            <input type="hidden" name= "kysymys" value="${kysymys.id}"/>
             <input type="submit" value="Lisaa"/>
         </form>
         <span></span>

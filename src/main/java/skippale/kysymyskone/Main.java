@@ -108,8 +108,8 @@ public class Main {
             return "";
         });
         
-        Spark.post("/:kurssi/:aihe/:kysymys/vastaus/", (req, res) -> {
-            int kysymys_id = Integer.parseInt(req.params(":kysymys").trim());
+        Spark.post("/uusivastaus", (req, res) -> {
+            int kysymys_id = Integer.parseInt(req.queryParams("kysymys"));
             String vastausteksti = req.queryParams("vastausteksti");
             int oikein = Integer.parseInt(req.queryParams("oikein").trim());
             Vastaus vastaus = new Vastaus(-1, kysymys_id, vastausteksti, oikein);
