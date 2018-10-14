@@ -6,6 +6,8 @@
     </head>
     
     <body>
+        <h1 th:text="${aiheensivu}">Aihe</h1>
+        
         <ul>
             <li th:each="kysymys : ${kysymyksia}">
                 <span th:text="${kysymys.kysymysteksti}">Kysymys</span>
