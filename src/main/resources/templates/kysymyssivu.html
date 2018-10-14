@@ -43,16 +43,15 @@
         </p>
         
         
-        <form action="/" method="GET">
-                <input type="submit" value="Takaisin etusivulle"/>
+        <form th:action="@{~/__${kurssisivu}__/__${aihesivu}__}" method="GET">
+            <input type="submit" value="Takaisin aiheen sivulle"/>
         </form>
         <form th:action="@{~/__${kurssisivu}__}" method="GET">
             <input type="submit" value="Takaisin kurssin sivulle"/>
         </form>
-        <form th:action="@{~/__${kurssisivu}__/__${aihesivu}__}" method="GET">
-            <input type="submit" value="Takaisin aiheen sivulle"/>
+        <form action="/" method="GET">
+                <input type="submit" value="Takaisin etusivulle"/>
         </form>
-        
         
     </body>
 </html>

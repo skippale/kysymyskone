@@ -19,13 +19,13 @@
         </ul>
         
         
-        
-        <form action="/" method="GET">
-                <input type="submit" value="Takaisin etusivulle"/>
-        </form>
         <form th:action="@{~/__${kurssisivu}__}" method="GET">
             <input type="submit" value="Takaisin kurssin sivulle"/>
         </form>
+        <form action="/" method="GET">
+                <input type="submit" value="Takaisin etusivulle"/>
+        </form>
+        
         
     </body>
 </html>
