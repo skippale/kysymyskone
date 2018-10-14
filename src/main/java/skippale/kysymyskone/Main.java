@@ -86,7 +86,7 @@ public class Main {
         
         Spark.get("/:kurssi/:aihe/:kysymys", (req, res) -> {
             HashMap map = new HashMap<>();
-            Integer kysymysId = Integer.parseInt(req.params(":kysymys"));
+            Integer kysymysId = Integer.parseInt(req.params(":kysymys").trim());
             map.put("kysymys", kysymykset.findOne(kysymysId));
             map.put("vastaukset", vastaukset.findVastaukset(kysymysId));
             String kurssisivu = req.params(":kurssi");
@@ -109,9 +109,9 @@ public class Main {
         });
         
         Spark.post("/:kurssi/:aihe/:kysymys/vastaus/", (req, res) -> {
-            int kysymys_id = Integer.parseInt(req.params(":kysymys"));
+            int kysymys_id = Integer.parseInt(req.params(":kysymys").trim());
             String vastausteksti = req.queryParams("vastausteksti");
-            int oikein = Integer.parseInt(req.queryParams("oikein"));
+            int oikein = Integer.parseInt(req.queryParams("oikein").trim());
             Vastaus vastaus = new Vastaus(-1, kysymys_id, vastausteksti, oikein);
             vastaukset.saveOrUpdate(vastaus);
             
@@ -120,7 +120,7 @@ public class Main {
         });
         
         Spark.post("/:kurssi/:aihe/:kysymys/:vastaus/poista", (req, res) -> {
-            int key = Integer.parseInt(req.params(":vastaus"));
+            int key = Integer.parseInt(req.params(":vastaus").trim());
             vastaukset.delete(key);
             
             res.redirect("/:kurssi/:aihe/:kysymys");
@@ -128,7 +128,7 @@ public class Main {
         });
         
         Spark.post("/:kurssi/:aihe/:kysymys/poista", (req, res) -> {
-            int key = Integer.parseInt(req.params(":kysymys"));
+            int key = Integer.parseInt(req.params(":kysymys").trim());
             kysymykset.delete(key);
             vastaukset.deleteAll(key);
             res.redirect("/:kurssi/:aihe");

@@ -72,10 +72,9 @@ public class VastausDao implements Dao<Vastaus, Integer>{
     public void saveOrUpdate(Vastaus object) throws SQLException {
         Connection conn = getConnection();
         
-        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Vastaus "
-                + "(kysymys_id, vastausteksti, oikein) VALUES (?, ?, ?)");
+        PreparedStatement stmt = conn.prepareStatement("INSERT INTO Vastaus (kysymys_id, vastausteksti, oikein) VALUES (?, ?, ?)");
         stmt.setInt(1, object.getKysymys_id());
-        stmt.setString(2, object.getVastausteksti());
+        stmt.setString(2, object.getVastausteksti().trim());
         stmt.setInt(3, object.getOikeinInt());
         
         stmt.executeUpdate();
