@@ -24,7 +24,7 @@
               <option value="1">Oikein</option>
               <option value="0">Vaarin</option>
             </select>
-            <input type="hidden" name= "kysymys" value="__${kysymys.id}__"/>
+            <input type="hidden" name= "kysymys" th:value="__${kysymys.id}__"/>
             <input type="submit" value="Lisaa"/>
         </form>
         <span></span>
