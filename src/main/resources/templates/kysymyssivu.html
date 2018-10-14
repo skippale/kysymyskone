@@ -18,7 +18,7 @@
         </ul>
         
         <h2>Lisaa vastausvaihtoehto</h2>
-        <form method="POST" action="/uusivastaus">
+        <form method="POST" action="/uusivastaus/">
             <input type="text" name="vastausteksti"/>Vastaus<br/>
             <select name="oikein">
               <option value="1">Oikein</option>
@@ -30,7 +30,7 @@
         <span></span>
         
         
-        <form method="POST" action="/poistakysymys">
+        <form method="POST" action="/poistakysymys/">
             <input type="hidden" name= "kysymys" th:value="__${kysymys.id}__"/>
             <input type="submit" value="Poista tama kysymys"/>
         </form>

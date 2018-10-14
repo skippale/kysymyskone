@@ -20,12 +20,12 @@
         </ul>
         
         <h2>Kaikki kysymykset:</h2>
-        <form th:action="@{~/kaikki}" method="GET">
+        <form action="/kaikki/}" method="GET">
             <input type="submit" value="Nayta"/>
         </form>
         
         <h2>Lisaa kysymys:</h2>
-        <form method="POST" action="/uusikysymys">
+        <form method="POST" action="/uusikysymys/">
             Kurssi<input type="text" name="kurssi"/><br/>
             Aihe<input type="text" name="aihe"/><br/>
             Kysymysteksti<input type="text" name="kysymysteksti"/><br/>

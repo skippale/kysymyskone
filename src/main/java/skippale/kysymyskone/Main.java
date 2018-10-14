@@ -97,7 +97,7 @@ public class Main {
             return new ModelAndView(map, "kysymyssivu");
         }, new ThymeleafTemplateEngine());
         
-        Spark.post("/uusikysymys", (req, res) -> {
+        Spark.post("/uusikysymys/", (req, res) -> {
             String kurssi = req.queryParams("kurssi");
             String aihe = req.queryParams("aihe");
             String kysymysteksti = req.queryParams("kysymysteksti");
@@ -108,7 +108,7 @@ public class Main {
             return "";
         });
         
-        Spark.post("/uusivastaus", (req, res) -> {
+        Spark.post("/uusivastaus/", (req, res) -> {
             int kysymys_id = Integer.parseInt(req.queryParams("kysymys").trim());
             String vastausteksti = req.queryParams("vastausteksti");
             int oikein = Integer.parseInt(req.queryParams("oikein").trim());
@@ -119,7 +119,7 @@ public class Main {
             return "";
         });
         
-        Spark.post("/poistavastaus", (req, res) -> {
+        Spark.post("/poistavastaus/", (req, res) -> {
             int key = Integer.parseInt(req.queryParams("vastaus").trim());
             vastaukset.delete(key);
             
@@ -127,7 +127,7 @@ public class Main {
             return "";
         });
         
-        Spark.post("/poistakysymys", (req, res) -> {
+        Spark.post("/poistakysymys/", (req, res) -> {
             int key = Integer.parseInt(req.queryParams("kysymys").trim());
             vastaukset.deleteAll(key);
             kysymykset.delete(key);
