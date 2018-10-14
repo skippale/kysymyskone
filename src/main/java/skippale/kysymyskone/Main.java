@@ -42,7 +42,7 @@ public class Main {
             ArrayList<Kysymys> kaikki = kysymykset.findAll();
             map.put("kysymyksia", kaikki);
             
-            return new ModelAndView(map, "kaikkikysymykset");
+            return new ModelAndView(map, "kaikkikysymykset.html");
         }, new ThymeleafTemplateEngine());
         
         Spark.get("/", (req, res) -> {
@@ -120,7 +120,7 @@ public class Main {
         });
         
         Spark.post("/poistavastaus", (req, res) -> {
-            int key = Integer.parseInt(req.params(":vastaus").trim());
+            int key = Integer.parseInt(req.queryParams("vastaus").trim());
             vastaukset.delete(key);
             
             res.redirect("/");
@@ -128,7 +128,7 @@ public class Main {
         });
         
         Spark.post("/poistakysymys", (req, res) -> {
-            int key = Integer.parseInt(req.params(":kysymys").trim());
+            int key = Integer.parseInt(req.queryParams("kysymys").trim());
             kysymykset.delete(key);
             vastaukset.deleteAll(key);
             res.redirect("/");
