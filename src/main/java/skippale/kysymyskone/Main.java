@@ -115,7 +115,7 @@ public class Main {
             Vastaus vastaus = new Vastaus(-1, kysymys_id, vastausteksti, oikein);
             vastaukset.saveOrUpdate(vastaus);
             
-            res.redirect("/:kurssi/:aihe/:kysymys");
+            res.redirect("/");
             return "";
         });
         
@@ -123,7 +123,7 @@ public class Main {
             int key = Integer.parseInt(req.params(":vastaus").trim());
             vastaukset.delete(key);
             
-            res.redirect("/:kurssi/:aihe/:kysymys");
+            res.redirect("/");
             return "";
         });
         
@@ -131,7 +131,7 @@ public class Main {
             int key = Integer.parseInt(req.params(":kysymys").trim());
             kysymykset.delete(key);
             vastaukset.deleteAll(key);
-            res.redirect("/:kurssi/:aihe");
+            res.redirect("/");
             return "";
         });
         
