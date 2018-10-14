@@ -7,14 +7,15 @@
             
     </head>
     <body>
-        <h1> Aiheet </h1>
-        
+        <h1 th:text="${kurssisivu}">Kurssi</h1>
+        <h2> Aiheet: </h2>
         <ul>
             <li th:each="aihe : ${aiheet}">
-                <span th:text="${aihe}">Aihe</span>
+                <p th:text="${aihe}">Aihe</p>
                 <form th:action="@{~/__${kurssi}__/__${aihe}__}" method="GET">
                     <input type="submit" value="Kysymyksiin"/>
                 </form>
+                    
             </li>
         </ul>
         
