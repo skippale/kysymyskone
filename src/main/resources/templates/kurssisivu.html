@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
     <head>
-        <title th:text="${kurssisivu}">Kurssi</title>
+        <title th:text="${kurssi}">Kurssi</title>
         <meta charset="UTF-8"></meta>
             
     </head>
     <body>
-        <h1 th:text="${kurssisivu}">Kurssi</h1>
+        <h1 th:text="${kurssi}">Kurssi</h1>
         <h2> Aiheet: </h2>
         <ul>
             <li th:each="aihe : ${aiheet}">

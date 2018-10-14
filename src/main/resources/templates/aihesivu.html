@@ -6,7 +6,8 @@
     </head>
     
     <body>
-        <h1 th:text="${kurssisivu}">Aihe</h1>
+        <h1 th:text="${kurssisivu}">Kurssi</h1>
+        <h2 th:text="${aiheensivu}">Aihe</h2>
         
         <ul>
             <li th:each="kysymys : ${kysymyksia}">
